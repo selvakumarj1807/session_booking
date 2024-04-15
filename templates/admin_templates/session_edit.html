@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Session</title>
+</head>
+
+<body>
+    <center>
+        <h1>Edit Session</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="id_subject">Subject:</label>
+            <input type="text" id="id_subject" name="subject" value="{{ form.subject.value }}">
+            <br><br>
+            <label for="id_date">Date:</label>
+            <input type="date" id="id_date" name="date" value="{{ form.date.value }}">
+            <br><br>
+            <label for="id_time">Time:</label>
+            <input type="time" id="id_time" name="time" value="{{ form.time.value }}">
+            <br><br>
+            <button type="submit">Save Session</button>
+        </form>
+        
+    </center>
+</body>
+
+</html>

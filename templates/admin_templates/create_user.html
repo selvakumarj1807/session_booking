@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create User</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css" />
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+    <br>
+    &nbsp;&nbsp;&nbsp;<a href="/admin_login/" class="btn btn-primary">Back to admin home</a>
+    &nbsp;&nbsp;&nbsp;<a href="/" class="btn btn-primary">Back to home</a>
+    <center>
+        <h1>Create User</h1>
+        
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }} <!-- Render form fields -->
+            <button type="submit">Save User</button>
+        </form>
+    </center>
+
+    <hr>
+
+    <div class="table-responsive">
+        <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+            <thead>
+                <th><input type="checkbox" id="checkall" /></th>
+                <th>ID</th>
+                <th>User Name</th>
+                <th>Password</th>
+                <th>Status</th>
+                <th>Created At</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td><input type="checkbox" class="checkthis" /></td>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.password }}</td>
+                    <td>{{ user.status }}</td>
+                    <td>{{ user.created_at }}</td>
+                    <td><a href="/admin_login/user_edit/{{ user.id }}" class="btn btn-primary">Edit</a></td>
+                    <td><a href="/admin_login/user_delete/{{ user.id }}" class="btn btn-danger">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#bootstrapdatatable').DataTable({
+                "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+                "iDisplayLength": 3
+            }
+            );
+        });
+    </script>
+
+</body>
+
+</html>

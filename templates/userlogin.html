@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #97c2ee;
+            padding-top: 50px;
+            /* Add top padding to body */
+        }
+
+        .container {
+            max-width: 400px;
+            /* Set maximum width for the container */
+            margin: auto;
+            /* Center the container horizontally */
+            padding: 20px;
+            /* Add padding inside the container */
+            background-color: #fff;
+            /* Set background color for the container */
+            border-radius: 5px;
+            /* Add border radius for rounded corners */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            /* Add shadow effect */
+        }
+
+        /* Center the form horizontally */
+        form {
+            text-align: center;
+        }
+
+        /* Add margin-bottom to form elements */
+        label,
+        input,
+        button {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">User Login</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" class="form-control"><br>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-control"><br>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+    </div>
+</body>
+
+</html>
